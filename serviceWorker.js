@@ -22,22 +22,23 @@ const getWorker = (options, minify = useMinifyDefault) => {
     .then(data => {
       if (typeof data === "object") {
         swData = data;
+        return data;
       }
     })
-    .then(
-      src =>
-        typeof src !== "object"
-          ? `${src}`
-          : Promise.resolve(
-              new Promise((resolve, reject) =>
-                readFile(
-                  options.swDest,
-                  defaultEncoding,
-                  (err, data) => (err ? reject(err) : resolve(data))
-                )
+    .then(src => {
+      console.log(src);
+      return typeof src !== "object" && typeof src !== "undefined"
+        ? `${src}`
+        : Promise.resolve(
+            new Promise((resolve, reject) =>
+              readFile(
+                options.swDest,
+                defaultEncoding,
+                (err, data) => (err ? reject(err) : resolve(data))
               )
             )
-    )
+          );
+    })
     .then(swString => {
       logger.status(chars.success, "Service worker generated");
       return swString;
