@@ -1,3 +1,14 @@
+const path = require("path");
+
+const defaultEncoding = "utf8";
+
+const chars = {
+  link: "🔗",
+  success: "✓",
+  error: "❌",
+  workbox: "🛠️"
+};
+
 const workboxConfigKey = "workbox";
 const defaultConfig = outDir => ({
   globDirectory: outDir,
@@ -17,6 +28,8 @@ const workboxTask = options => (options.swSrc ? INJECT : GENERATE);
 module.exports = {
   workboxConfigKey,
   defaultConfig,
+  defaultEncoding,
   workboxConfig,
-  workboxTask
+  workboxTask,
+  chars
 };
