@@ -1,6 +1,6 @@
 {
   "name": "parcel-plugin-workbox2",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A plugin for Parcel to generate a service worker with Workbox",
   "main": "index.js",
   "repository": "git@github.com:jabuco/parcel-plugin-workbox2.git",
