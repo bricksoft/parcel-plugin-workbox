@@ -26,7 +26,6 @@ const getWorker = (options, minify = useMinifyDefault) => {
       }
     })
     .then(src => {
-      console.log(src);
       return typeof src !== "object" && typeof src !== "undefined"
         ? `${src}`
         : Promise.resolve(
